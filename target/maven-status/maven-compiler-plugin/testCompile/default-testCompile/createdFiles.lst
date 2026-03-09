@@ -1,0 +1,13 @@
+soporte\DoblesPrueba$FakeEspecialistaRepository.class
+soporte\DoblesPrueba$FakeCitaRepository.class
+negocio\servicio\ConsultarCitaServicioTest.class
+soporte\DoblesPrueba.class
+negocio\servicio\ReagendarCitaServicioTest.class
+soporte\DoblesPrueba$FakePacienteRepository.class
+negocio\servicio\ExportarCitasServicioTest.class
+dominio\modelo\CitaTest.class
+negocio\servicio\AgendarCitaServicioTest.class
+negocio\servicio\HorarioSugeridoServicioTest.class
+negocio\validacion\AgendarCitaValidacionTest.class
+negocio\servicio\CancelarCitaServicioTest.class
+soporte\DatosPrueba.class
