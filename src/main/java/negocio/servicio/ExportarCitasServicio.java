@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package negocio.servicio;
 import dominio.modelo.Cita;
 import dominio.repositorio.citaRepositorio;
@@ -9,16 +5,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.List;
 import negocio.DTO.ExportarCitas;
-/**
- *
- * @author ramir
- */
-
-
-
-
-
-
 
 public class ExportarCitasServicio {
 
@@ -27,8 +13,6 @@ public class ExportarCitasServicio {
     public ExportarCitasServicio(citaRepositorio citaRepo) {
         this.citaRepo = citaRepo;
     }
-
-
 
     public ResultadoExportacion exportar(ExportarCitas request) {
         if (request.fecha == null) {

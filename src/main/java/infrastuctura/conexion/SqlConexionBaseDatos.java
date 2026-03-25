@@ -44,6 +44,16 @@ public class SqlConexionBaseDatos {
                     especialidad TEXT NOT NULL
                 )
             """);
+            
+            // TABLA AGENDADOR
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS agendador (
+                    login TEXT PRIMARY KEY,
+                    fullName TEXT NOT NULL,
+                    passwordHash TEXT NOT NULL,
+                    passwordSalt TEXT NOT NULL
+                )
+            """);
 
             // TABLA CITAS
             stmt.executeUpdate("""

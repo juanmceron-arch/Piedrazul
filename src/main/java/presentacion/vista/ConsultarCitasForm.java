@@ -1,21 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package presentacion.vista;
 
 import dominio.modelo.Cita;
+import dominio.modelo.Especialista;
 import infrastuctura.observer.Observador;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.List;
 import presentacion.controlador.citaControlador;
 import presentacion.modelo.citaModelo;
 
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -32,11 +25,13 @@ public class ConsultarCitasForm extends JPanel implements Observador {
     private JTextField txtFiltroPaciente;
     private JTextField txtFiltroEspecialista;
     private JTextArea txtMensajes;
+    private List<Especialista> especialistas;
 
-    public ConsultarCitasForm(citaControlador controller, citaModelo model) {
+    public ConsultarCitasForm(citaControlador controller, citaModelo model, List<Especialista> especialistas) {
         this.controller = controller;
         this.model = model;
         this.model.agregarObservador(this);
+        this.especialistas = especialistas;
 
         setLayout(new BorderLayout());
         add(buildFiltroPanel(), BorderLayout.NORTH);
@@ -167,8 +162,22 @@ public class ConsultarCitasForm extends JPanel implements Observador {
         String fechaTexto = JOptionPane.showInputDialog(this, "Ingrese fecha (yyyy-MM-dd):");
         if (fechaTexto == null || fechaTexto.isBlank()) return;
 
-        String especialistaId = JOptionPane.showInputDialog(this, "Ingrese ID del terapista (ej: ESP1):");
-        if (especialistaId == null || especialistaId.isBlank()) return;
+        JComboBox<Especialista> combo = new JComboBox<>();
+        for (Especialista esp : especialistas) {
+            combo.addItem(esp);
+        }
+
+        int opcionCombo = JOptionPane.showConfirmDialog(
+                this,
+                combo,
+                "Seleccione especialista",
+                JOptionPane.OK_CANCEL_OPTION
+        );
+
+        if (opcionCombo != JOptionPane.OK_OPTION) return;
+
+        Especialista seleccionado = (Especialista) combo.getSelectedItem();
+        String especialistaId = seleccionado.getId();
 
         JFileChooser fileChooser = new JFileChooser();
         int opcion = fileChooser.showSaveDialog(this);

@@ -31,5 +31,10 @@ public class Especialista {
         return especialidad;
     }
     
+    @Override
+    public String toString() {
+        return nombre + " (" + especialidad + ")";
+    }
+    
     
 }
